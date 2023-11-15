@@ -1,20 +1,12 @@
-import express, { Request, Response } from "express";
+import express, { Request, Response } from 'express';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const app = express();
 
-app.post("/", lidarComRequisicao );
+app.use(express.json());
 
-function lidarComRequisicao(req: Request,  res: Response) {
-    res.status(401).send("Olá, mundo!");
-}
-//function appIniciado() {
-    //console.log("Aplicação inicada!");
-
-//const appIniciado = () => {
-    //console.log("Aplicação inicada!");
-//}
-//}
-
-app.listen(3000, () => {
-    console.log("Servidor rodando na porta 3000");
+app.listen(process.env.PORT, () => {
+    console.log('Server listening on port ${process.env.PORT}')
 });
